@@ -1,5 +1,4 @@
 from .abstract import AbstractEncryptor, AbstractDecryptor
-from string import ascii_lowercase
 
 
 class CaesarEncryptor(AbstractEncryptor):
