@@ -3,7 +3,7 @@
 Implementation of some crytographic algorithms.
 
 ## Usage
-i
+
 To use any cryptographic algorithm, first import it:
 ```
 from crytpos.rsa import RSAEncryptor
