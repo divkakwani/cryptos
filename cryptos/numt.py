@@ -7,11 +7,13 @@ Collection of some useful number theoretic functions
 
 from math import sqrt
 
+
 def isprime(n):
     """
     Returns true iff n is a prime number
     """
     return all(n % i for i in range(2, int(sqrt(n))+1))
+
 
 def gcd(a, b):
     """
@@ -19,9 +21,10 @@ def gcd(a, b):
     """
     return gcd(b, a % b) if b != 0 else a
 
+
 def ext_euclid(x, y):
     """
-    Returns (g, a, b) such that g = gcd(x, y) = ax + by 
+    Returns (g, a, b) such that g = gcd(x, y) = ax + by
     """
     if y == 0:
         # gcd = x and gcd = x = (1)x + (0)y
@@ -32,3 +35,8 @@ def ext_euclid(x, y):
         # a1 * (y) + b1 * (x % y) = b1 * x + (a1 - (x//y)) * y = g
         (g, a, b) = (g, b1, a1 - (x // y) * b1)
         return (g, a, b)
+
+
+def modulo_inv(a, m):
+    (g, s, t) = ext_euclid(a, m)
+    return s if g == 1 else None
