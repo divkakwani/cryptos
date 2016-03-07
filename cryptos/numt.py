@@ -82,8 +82,22 @@ def fermat_primality_test(n, accuracy=100):
     # Prelim tests
     if n % 2 == 0:
         return False
-    for i in range(s):
+    for i in range(accuracy):
         a = random.randint(2, n-2)
         if composite_witness_fermat(a, n):
             return False
     return True
+
+
+def randprime(a, b, primality_test=fermat_primality_test, max_runs=1000):
+    """
+    Returns a random prime between a and b, inclusive.
+    If there is no prime between a and b, or if the function is
+    unable to find one after trying `max_runs` random ints, then
+    the exception `ValueError` is raised
+    """
+    for run in range(max_runs):
+        num = random.randint(a, b)
+        if primality_test(num):
+            return num
+    raise ValueError
