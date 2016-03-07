@@ -37,6 +37,24 @@ def ext_euclid(x, y):
         return (g, a, b)
 
 
+"""
+Modular arithmetic operations
+"""
+
 def modulo_inv(a, m):
     (g, s, t) = ext_euclid(a, m)
     return s if g == 1 else None
+
+
+def modulo_exp(a, n, m):
+    """
+    Returns (a^n) modulo m
+    """
+    # Base Case
+    if n == 0:  return 1
+    # Recursive Case
+    if n % 2 == 0:
+        halfexp = modulo_exp(a, n//2, m)
+        return (halfexp * halfexp) % m
+    else:
+        return (modulo_exp(a, n-1, m) * a) % m
