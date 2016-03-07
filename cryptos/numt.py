@@ -6,7 +6,7 @@ Collection of some useful number theoretic functions
 """
 
 from math import sqrt
-
+import random
 
 def naive_primality_test(n):
     """
@@ -58,3 +58,32 @@ def modulo_exp(a, n, m):
         return (halfexp * halfexp) % m
     else:
         return (modulo_exp(a, n-1, m) * a) % m
+
+
+def composite_witness_fermat(a, p):
+    """
+    Test for primality, based on the following theorem, aka Fermat's little theorem:
+        a^(p-1) ≡ 1 (mod p) if p is a prime
+    If (a, p) do not satisfy the equation, then p is necessarily a composite.
+    However, if (a, p) do satisfy the equation, then p may or may not be prime.
+    There, if the function returns False, then p is likey a prime, but not certainly. 
+    """
+    return False if modulo_exp(a, p-1, p) == 1 else True
+
+
+def fermat_primality_test(n, accuracy=100):
+    """
+    :param n: the input number whose primality is to be tested
+    :param accuray: Greater accuracy <=> greater confidence in the primality of n if the
+                    return value is True
+    
+    Performs composite_witness_fermat test s times on n.
+    """
+    # Prelim tests
+    if n % 2 == 0:
+        return False
+    for i in range(s):
+        a = random.randint(2, n-2)
+        if composite_witness_fermat(a, n):
+            return False
+    return True
