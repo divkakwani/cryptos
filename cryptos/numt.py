@@ -8,11 +8,11 @@ Collection of some useful number theoretic functions
 from math import sqrt
 
 
-def isprime(n):
+def naive_primality_test(n):
     """
     Returns true iff n is a prime number
     """
-    return all(n % i for i in range(2, int(sqrt(n))+1))
+    return (n > 2) and (n % 2 != 0) and all(n % i for i in range(3, int(sqrt(n))+1, 2))
 
 
 def gcd(a, b):
