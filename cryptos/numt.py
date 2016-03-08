@@ -7,7 +7,10 @@ Collection of some useful number theoretic functions
 
 from math import sqrt
 import random
+from functools import lru_cache
 
+
+@lru_cache(maxsize=128)
 def naive_primality_test(n):
     """
     Returns true iff n is a prime number
