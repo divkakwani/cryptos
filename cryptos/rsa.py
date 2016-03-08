@@ -28,4 +28,4 @@ def RSA_keygen(keylen=10):
     while gcd(e, phi) != 1:
         e = randint(1, phi-1)
     d = modulo_inv(e, phi) % phi
-    return (p, q, e, d)
+    return (n, e, d)
