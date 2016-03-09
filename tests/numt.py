@@ -20,6 +20,11 @@ class TestNumT(unittest.TestCase):
     def test_fermat_primality(self):
         self.general_primality_test(numt.fermat_primality_test)
 
+    def test_modulo_exp(self):
+        self.assertEqual(numt.modulo_exp(3, 3, 6), 3)
+        self.assertEqual(numt.modulo_exp(2, 5, 11), 10)
+        self.assertEqual(numt.modulo_exp(5, 4, 100), 25)
+        self.assertEqual(numt.modulo_exp(6, 3, 7), 6)
 
 if __name__ == '__main__':
     unittest.main()
