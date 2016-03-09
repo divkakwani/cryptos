@@ -73,3 +73,6 @@ target/
 .python-version
 
 
+# tags file
+tags
+
