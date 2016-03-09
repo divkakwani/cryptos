@@ -53,14 +53,13 @@ def modulo_exp(a, n, m):
     """
     Returns (a^n) modulo m
     """
-    # Base Case
-    if n == 0:  return 1
-    # Recursive Case
-    if n % 2 == 0:
-        halfexp = modulo_exp(a, n//2, m)
-        return (halfexp * halfexp) % m
-    else:
-        return (modulo_exp(a, n-1, m) * a) % m
+    ans = 1
+    while n > 0:
+        if (n & 1) == 1:
+            ans = (ans * a) % m
+        n = n >> 1
+        a = (a * a) % m
+    return ans
 
 
 def composite_witness_fermat(a, p):
