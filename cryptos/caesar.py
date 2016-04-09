@@ -1,4 +1,5 @@
 from .abstract import AbstractEncryptor, AbstractDecryptor
+from random import randint
 
 
 class CaesarEncryptor(AbstractEncryptor):
@@ -22,3 +23,11 @@ class CaesarDecryptor(AbstractDecryptor):
         ptl = map(lambda c: chr((ord(c)-ord('a')-self.key)%26+ord('a')), ciphertext)
         pt = ''.join(ptl)
         return pt
+
+
+class CaesarEncDec(CaesarEncryptor, CaesarDecryptor):
+
+    def __init__(self):
+        shift = randint(2, 10)
+        CaesarEncryptor.__init__(self, shift)
+        CaesarDecryptor.__init__(self, shift)
