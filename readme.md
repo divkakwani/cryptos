@@ -2,6 +2,18 @@
 
 Implementation of some crytographic algorithms.
 
+## Preamble
+
+Every cipher operates on code-agnostic `bytestring` type. To encrypt/decrypt
+a piece of text, do the following:
+```
+plaintext = 'Hello World'   # unicode string
+encoded_pt = plaintext.encode()
+encoded_ct = cipherobj.encrypt(encoded_pt)
+ciphertext = encoded_ct.decode('utf-8')
+```
+
+
 ## Usage
 
 To use any cryptographic algorithm, first import it:
